@@ -1,0 +1,27 @@
+
+
+
+// Replace with your network credentials
+const char* ssid = "a";
+const char* password = "d";
+
+#define DEBUG 0
+#define PRODUCTION 1
+#define RUNTIME PRODUCTION
+// MQTT Broker
+#if RUNTIME == DEBUG
+const char *mqtt_broker = "broker.emqx.io";
+const char *topic = "door";
+const char *mqtt_username = "emqx";
+const char *mqtt_password = "public";
+const int mqtt_port = 1883;
+#endif
+#if RUNTIME == PRODUCTION
+const char *mqtt_broker = "10.0.0.1";
+const char *topic_listen = "door/listen";
+
+const char *topic_talk = "door/talk";
+const char *mqtt_username = "door";
+const char *mqtt_password = "key";
+const int mqtt_port = 1883;
+#endif
